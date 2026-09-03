@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-tajawal: 'Tajawal', sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050505] text-[#E0E0E0];
+  }
+}
+
+/* Custom Cosmetics Keyframes */
+@keyframes flame-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.7), inset 0 0 15px rgba(234, 88, 12, 0.4);
+    border-color: #f97316;
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.9), 0 0 10px rgba(245, 158, 11, 0.8);
+    border-color: #ef4444;
+  }
+}
+
+@keyframes gold-shine {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.3);
+    border-color: #D4AF37;
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(245, 158, 11, 0.9), inset 0 0 18px rgba(254, 240, 138, 0.5);
+    border-color: #FBBF24;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.8), inset 0 0 10px rgba(6, 182, 212, 0.3);
+    border-color: #06B6D4;
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(59, 130, 246, 0.9), inset 0 0 15px rgba(147, 197, 253, 0.5);
+    border-color: #3B82F6;
+  }
+}
+
+@keyframes emerald-glow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.7), inset 0 0 10px rgba(16, 185, 129, 0.3);
+    border-color: #10B981;
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.9), inset 0 0 16px rgba(110, 231, 183, 0.5);
+    border-color: #34D399;
+  }
+}
+
+@keyframes galaxy-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes aura-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.anim-flame-border {
+  animation: flame-pulse 2s infinite alternate ease-in-out;
+}
+
+.anim-gold-shine {
+  animation: gold-shine 2.5s infinite alternate ease-in-out;
+}
+
+.anim-neon-pulse {
+  animation: neon-pulse 2s infinite alternate ease-in-out;
+}
+
+.anim-emerald-glow {
+  animation: emerald-glow 2.5s infinite alternate ease-in-out;
+}
+
+.anim-galaxy-text {
+  background: linear-gradient(270deg, #A855F7, #EC4899, #3B82F6, #10B981, #A855F7);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxy-flow 6s ease infinite;
+}
+
+.anim-gold-text {
+  background: linear-gradient(270deg, #D4AF37, #FDE68A, #D4AF37, #F59E0B, #D4AF37);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxy-flow 5s ease infinite;
+}
+
+.anim-flame-text {
+  background: linear-gradient(270deg, #EA580C, #F97316, #EF4444, #FBBF24);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxy-flow 3s ease infinite;
+}
+

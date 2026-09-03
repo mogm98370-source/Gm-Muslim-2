@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with GM points, cosmetics, and role",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "gmPoints": { "type": "number" },
+        "totalEarnedPoints": { "type": "number" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "activeCosmetics": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "SupportTicket": {
+      "title": "SupportTicket",
+      "description": "Customer support ticket with messages and live chat",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "subject": { "type": "string" },
+        "category": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "in_progress", "resolved", "closed"] },
+        "messages": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "subject", "message", "status", "createdAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Store cosmetic item or product",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string" },
+        "price": { "type": "number" },
+        "isFree": { "type": "boolean" },
+        "rarity": { "type": "string" },
+        "design": { "type": "object" },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["name", "type", "price"]
+    },
+    "SupportConversation": {
+      "title": "SupportConversation",
+      "description": "Official 1-on-1 direct support conversation between user and GM Muslim Admin",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userPhoto": { "type": "string" },
+        "lastMessage": { "type": "string" },
+        "lastMessageAt": { "type": "string" },
+        "unreadForAdmin": { "type": "number" },
+        "unreadForUser": { "type": "number" },
+        "status": { "type": "string", "enum": ["open", "needs_reply", "closed"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "userName", "status"]
+    },
+    "InventoryItem": {
+      "title": "InventoryItem",
+      "description": "Item owned by user in inventory",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "purchasedAt": { "type": "string" },
+        "isPermanent": { "type": "boolean" }
+      },
+      "required": ["productId", "name", "type"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "/users/{userId}/inventory/{itemId}": {
+      "schema": { "$ref": "#/entities/InventoryItem" },
+      "description": "User inventory items"
+    },
+    "/supportTickets/{ticketId}": {
+      "schema": { "$ref": "#/entities/SupportTicket" },
+      "description": "Support tickets and chats"
+    },
+    "/supportConversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/SupportConversation" },
+      "description": "Direct 1-on-1 support conversations between users and GM Muslim Admin"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Store catalog products"
+    }
+  }
+}
